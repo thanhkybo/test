@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="Câu 1" onclick="cau1()">
+<input type="button" value="Câu 2" onclick="cau2()">
+<input type="button" value="Câu 3" onclick="cau3()">
+<input type="button" value="Câu 4" onclick="cau4()"><br><br>
+<canvas id="myCanvas" style="border: 2px solid" width="300" height="300"></canvas>
+
+<script>
+    function cau1() {
+        function findMax() {
+            let diem = [100, 40, 50, 60, 70, 80, 90]
+            let max = 0
+
+            for (let i = 0; i < diem.length; i++) {
+                if (max < diem[i]) {
+                    max = diem[i]
+                }
+            }
+            alert(max)
+        }
+
+        findMax()
+    }
+
+    //
+    function cau2() {
+        let soNguyen = [5, 6, 7, 8, 9, 10]
+
+        function tryRemoveFromArray(soNguyen, x) {
+            for (let i = 0; i < soNguyen.length; i++) {
+                if (soNguyen[i] === x) {
+                    soNguyen.splice(i, 1)
+                    i--
+                }
+            }
+            return soNguyen
+        }
+
+        alert(tryRemoveFromArray(soNguyen, 5))
+    }
+
+    //
+    function cau3() {
+        function isFibonacci(int) {
+            let F1 = 0, F2 = 1
+            while (true) {
+                let number = fibonacci();
+                if (int === number) {
+                    return true;
+                } else {
+                    if (number > int) {
+                        return false;
+                    }
+                }
+            }
+
+            function fibonacci() {
+                let F3 = F1 + F2;
+                F1 = F2;
+                F2 = F3;
+                return F3;
+            }
+        }
+        alert(isFibonacci(3))
+    }
+
+    //
+    function cau4() {
+        let canvas = document.getElementById('myCanvas')
+        let pen = canvas.getContext('2d')
+
+        class Circle {
+            constructor(_x, _y, _radius, _color) {
+                this.x = _x
+                this.y = _y
+                this.radius = _radius
+                this.color = _color
+            }
+
+            draw(pen) {
+                pen.beginPath()
+                pen.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+                pen.fillStyle
+                pen.fill()
+                pen.closePath()
+            }
+        }
+
+        let render = new Circle(10, 10, 100, '#000000')
+        render.draw(pen)
+    }
+</script>
+</body>
+</html>
